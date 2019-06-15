@@ -1,0 +1,33 @@
+class MyStack {
+    queue<int> pushQ;
+    queue<int> popQ;
+public:
+    /** Initialize your data structure here. */
+    MyStack() {     
+    }  
+    /** Push element x onto stack. */
+    void push(int x) {
+       pushQ.push(x);
+		for (int i = 1; i<pushQ.size(); i++) {
+			pushQ.push(pushQ.front());  // everytime, when you push a value, you travers the whole queue. 
+			pushQ.pop();
+		}     
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+        int n = pushQ.front();
+        pushQ.pop();
+        return n;
+    }
+    
+    /** Get the top element. */
+    int top() {
+        return pushQ.front();
+    }
+    
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        return pushQ.empty();
+    }
+};
